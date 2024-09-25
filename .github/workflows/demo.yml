@@ -1,0 +1,28 @@
+name: Hourly Commit
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # This runs every hour at minute 0
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Make changes
+        run: |
+          echo "Update at $(date)" >> update.txt
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "GitHub Actions"
+          git add update.txt
+          git commit -m "Update at $(date)" || echo "No changes to commit"
+
+      - name: Push changes
+        run: |
+          git push origin HEAD:main  # Adjust the branch name if necessary
