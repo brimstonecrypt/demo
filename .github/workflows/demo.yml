@@ -1,8 +1,8 @@
 name: Hourly Commit
 
 on:
-  schedule:
-    - cron: '0 * * * *'  # This runs every hour at minute 0
+  # schedule:
+    # - cron: '0 * * * *'  # This runs every hour at minute 0
 
 jobs:
   commit:
