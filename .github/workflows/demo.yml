@@ -1,8 +1,8 @@
 name: Hourly Commit
 
 on:
-  # schedule:
-    # - cron: '0 * * * *'  # This runs every hour at minute 0
+  schedule:
+    - cron: '0 0 * * *'  # This runs every hour at minute 0
 
 jobs:
   commit:
@@ -18,8 +18,8 @@ jobs:
 
       - name: Commit changes
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "GitHub Actions"
+          git config --local user.email "brimstonecrypt@gmail.com"
+          git config --local user.name "brimstonecrypt"
           git add update.txt
           git commit -m "Update at $(date)" || echo "No changes to commit"
 
